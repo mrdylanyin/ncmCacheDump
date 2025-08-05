@@ -1,3 +1,8 @@
 /test
 /output*
 /__pycache__
+.DS_Store
+.idea
+*.log
+tmp/
+.vscode
