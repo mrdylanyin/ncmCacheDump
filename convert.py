@@ -88,14 +88,14 @@ def convert_file(src_file: str, out_dir: str, song_detail: dict = None):
     bitrate = SongFilename(src_file).bitrate
 
     out_file = (
-        f"{song_detail['name']} - {song_detail['artists'][0]['name']}"
+        f"{song_detail['artists'][0]['name']} - {song_detail['name']}"
         if song_detail and song_detail["name"]
         else os.path.basename(src_file)
     )
     out_file = re.sub(r'[\\/:*?"<>|]', "_", out_file)
-    out_file += f" ({bitrate}k)" if size_matched else f" ({bitrate}k UNCOMPLETED)"
+    # out_file += f" ({bitrate}k)" if size_matched else f" ({bitrate}k UNCOMPLETED)"
     out_file += f".{ext}"
-    out_file = os.path.join(out_dir, out_file)
+    out_file = os.path.join(out_dir, song_detail["album"]["name"],out_file)
 
     convert_uc(src_file, out_file)
 
